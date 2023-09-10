@@ -72,4 +72,23 @@ async def bossfight(ctx):
         await ctx.send('Вы проиграли')
     else:
         await ctx.send('Вы победили')
+
+@bot.command('mem')
+async def mem(ctx):
+    with open('images/mem1.jpg', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+
+@bot.command('mem1')
+async def mem2(ctx):
+    with open('images/mem2.jpg', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+
+@bot.command('mem2')
+async def mem2(ctx):
+    with open('images/mem3.jpg', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+
 bot.run('///')
