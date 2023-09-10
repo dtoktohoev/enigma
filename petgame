@@ -1,0 +1,75 @@
+import discord
+from discord.ext import commands
+import random
+from random import randint
+
+bot = commands.Bot(command_prefix='/', intents = discord.Intents.all())
+
+food = ["булочку","сникерс","доширак","чипсики"]
+
+pet = {
+    'health': 100,
+    'strength': 5,
+    'defence': 1
+    }
+
+@bot.command('train')
+async def train(ctx):
+    pet['strength'] += 2
+    pet['health'] -= 5
+    await ctx.send('Ваш питомец прочел одну страницу "Искусство войны"')
+    await ctx.send(str(pet))
+    
+@bot.command('feed')
+async def feed(ctx):
+    pet['health'] += 10
+    await ctx.send('Ваш питомец похрустел чипсеками')
+    await ctx.send(str(pet))
+    
+@bot.command('cheat')
+async def cheat(ctx):
+    pet['health'] += 100
+    pet['strength'] += 20
+    pet['defence'] += 5
+    await ctx.send('Ваш питомец использовал чит-код')
+    await ctx.send(str(pet))
+
+@bot.command('fight')
+async def fight(ctx):
+    enemy = {
+    'health': randint(40,100),
+    'strength': (randint(5,20)),
+    'defence': (randint(1,10)),
+    }
+    await ctx.send('Ваш питомец атакует врага')
+    while pet['health'] >= 0 and enemy['health'] >= 0:
+        pet['health'] -= enemy['strength'] - pet['defence']
+        enemy['health'] -= pet['strength'] - enemy['defence']
+        await ctx.send('Ваш питомец:'+str(pet))
+        await ctx.send('Враг :'+str(enemy))
+        
+    if enemy['health'] > pet['health']:
+        await ctx.send('Вы проиграли')
+    else:
+        await ctx.send('Вы победили')
+        
+@bot.command('bossfight')
+async def bossfight(ctx):
+    boss = {
+    'health': randint(400,600),
+    'strength': (randint(70,100)),
+    'defence': (randint(50,100)),
+    }
+    await ctx.send('Вы дошли до главного Босса: '+str(boss))
+    await ctx.send('Ваш питомец атакует босса')
+    while pet['health'] >= 0 and boss['health'] >= 0:
+        pet['health'] -= boss['strength'] - pet['defence']
+        boss['health'] -= pet['strength'] - boss['defence']
+        await ctx.send('Ваш питомец:'+str(pet))
+        await ctx.send('Босс :'+str(boss))
+        
+    if boss['health'] > pet['health']:
+        await ctx.send('Вы проиграли')
+    else:
+        await ctx.send('Вы победили')
+bot.run('///')
