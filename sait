@@ -1,0 +1,16 @@
+INDEX.HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="sait" href="/style.css"> 
+</head>
+<body>
+    <p>hello, world!</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/QDLAdYzEZ6I?si=qGB6NY9k0olyHdvy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe src="https://www.gismeteo.ru/weather-ulan-ude-4804/" frameborder="0" width="500" heigth="500"></iframe>
+
+</body>
+</html>
